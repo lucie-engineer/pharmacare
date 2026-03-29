@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: pharmacare
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pharmacaredb
+    username: postgres
+    password: system
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id:
+            client-secret:
+            scope:
+              - email
+              - profile
+          github:
+            client-id:
+            client-secret:
+            scope:
+              - user
+              - email
+        provider:
+          github:
+            authorization-uri: https://github.com/login/oauth/authorize
+            token-uri: https://github.com/login/oauth/access_token
+            user-info-uri: https://api.github.com/user
+            user-name-attribute: login
+
+server:
+  port: 8083
+
+app:
+  jwt:
+    secret: pharmacare_super_secret_key_that_is_long_enough_for_security
+    expiration: 86400000
+
+
+
+
+
+#  https://github.com/settings/developers
